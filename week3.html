@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 3</title>
+        <style>
+            input {
+                height: 30px;
+                width: 400px;
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="user_name" placeholder="What's your name?">
+        <br>
+        <input type="text" id="zip" placeholder="Enter your ZIP code">
+        <br>
+        <input type="text" id="street" placeholder="Enter your street">
+        <br>
+        <input type="text" id="neighborhood" placeholder="Enter your neighborhood">
+        <br>
+        <input type="text" id="city" placeholder="Enter your city">
+        <br>
+        <input type="text" id="state" placeholder="Enter your state">
+        <br>
+
+        <input type="file" onchange="showFile(this)">
+        <button onclick="save()">Save</button>
+
+        <script>
+            function showFile(input) {
+                let file = input.files[0];
+                let fr = new FileReader();
+                fr.onload = function(archiveData) {
+                    let data = JSON.parse(archiveData.target.result);
+                    document.getElementById("user_name").value = data.name;
+                    document.getElementById("zip").value = data.zip;
+                    document.getElementById("street").value = data.street;
+                    document.getElementById("neighborhood").value = data.neighborhood;
+                    document.getElementById("city").value = data.city;
+                    document.getElementById("state").value = data.state;
+                }
+                fr.readAsText(file);
+            }
+            function save() {
+                let tempLink = document.createElement("a");
+                let savingData = {
+                    "name":document.getElementById("user_name").value,
+                    "zip":document.getElementById("zip").value,
+                    "street":document.getElementById("street").value,
+                    "neighborhood":document.getElementById("neighborhood").value,
+                    "city":document.getElementById("city").value,
+                    "state":document.getElementById("state").value
+                }
+                let myFile = new Blob([JSON.stringify(savingData)],{type:"text/plain"});
+                tempLink.setAttribute("href", URL.createObjectURL(myFile));
+                tempLink.setAttribute("download", "data.json");
+                tempLink.click();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 1</title>
+    </head>
+    <body>
+        <script>
+            // let names = ["Agnelo", "Medeiros", "Venturi", "Caio"];
+            // // console.log("Removeu " + names.pop());
+            // console.log(names);
+            // names.push("Vanderlei");
+            // console.log(names);
+
+            // let task = {"description":"Study JS", "local": "IFMG", "time":"21:00"};
+            // console.log(task);
+
+            // let list = [
+            //     {"description":"Study JS", "local": "IFMG", "time":"21:00"},
+            //     {"description":"Do activities", "local": "Home", "time":"08:00"},
+            //     {"description":"Read the JS book", "local": "Home", "time":"09:00"}
+            // ];
+            // console.log(list);
+
+            let list = [
+                {"description":"Study JS", "local": "IFMG", "time":"21:00"},
+                {"description":"Do activities", "local": "Home", "time":"08:00"},
+                {"description":"Read the JS book", "local": "Home", "time":"09:00"}
+            ];
+            function addList(description, local, time) {
+                let newElement = {"description":description, "local":local, "time":time};
+                list.push(newElement);
+                console.log(list);
+            }
+        </script>
+    </body>
+</html>

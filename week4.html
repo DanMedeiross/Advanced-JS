@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 4</title>
+        <style>
+            input {
+                height: 30px;
+                width: 400px;
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="user_name" placeholder="What's your name?">
+        <br>
+        <input type="text" id="zip" onfocusout="zipSearch()" placeholder="Enter your ZIP code">
+        <br>
+        <input type="text" id="street" placeholder="Enter your street">
+        <br>
+        <input type="text" id="neighborhood" placeholder="Enter your neighborhood">
+        <br>
+        <input type="text" id="city" placeholder="Enter your city">
+        <br>
+        <input type="text" id="state" placeholder="Enter your state">
+        <br>
+
+        <script>
+            function zipSearch() {
+                let zip = document.getElementById("zip").value;
+                let url = "https://brasilapi.com.br/api/cep/v1/" + zip;
+                fetch(url).then(function(data) {
+                    data.json().then(function(address) {
+                        document.getElementById("street").value = address.street;
+                        document.getElementById("neighborhood").value = address.neighborhood;
+                        document.getElementById("city").value = address.city;
+                        document.getElementById("state").value = address.state;
+                    })
+                })
+            }
+        </script>
+    </body>
+</html>

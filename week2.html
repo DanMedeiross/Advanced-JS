@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 2</title>
+    </head>
+    <body>
+        <p>Hello! Type your name below</p>
+        <input type="text" id="name">
+        <button onclick="warn()">OK</button>
+        <p id="userName">-----</p>
+        <script>
+            function warn() {
+                let name = document.getElementById("name").value;
+                alert("Hello! How are you " + name + "?");
+                document.getElementById("userName").innerHTML = "<b>Typed name: </b>" + name;
+            }
+            console.log(name);
+        </script> 
+    </body>
+</html>
